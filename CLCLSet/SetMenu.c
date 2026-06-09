@@ -156,6 +156,8 @@ BOOL CALLBACK set_menu_proc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			AppendMenu(hMenu, MF_STRING, 9, message_get_res(IDS_MENU_FORMAT_9));
 			AppendMenu(hMenu, MF_STRING, 10, message_get_res(IDS_MENU_FORMAT_10));
 			AppendMenu(hMenu, MF_STRING, 11, message_get_res(IDS_MENU_FORMAT_11));
+			AppendMenu(hMenu, MF_STRING, 12, message_get_res(IDS_MENU_FORMAT_12));
+			AppendMenu(hMenu, MF_STRING, 13, message_get_res(IDS_MENU_FORMAT_13));
 
 			// ÉÅÉjÉÖÅ[ÇÃï\é¶
 			GetWindowRect(GetDlgItem(hDlg, LOWORD(wParam)), (LPRECT)&button_rect);
@@ -200,6 +202,12 @@ BOOL CALLBACK set_menu_proc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				break;
 			case 11:
 				lstrcpy(buf, TEXT("%t"));
+				break;
+			case 12:
+				lstrcpy(buf, TEXT("%q"));
+				break;
+			case 13:
+				lstrcpy(buf, TEXT("%Q"));
 				break;
 			default:
 				*buf = '\0';

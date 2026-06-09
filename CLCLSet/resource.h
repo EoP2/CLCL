@@ -161,6 +161,8 @@
 #define IDS_MENU_FORMAT_9               2009
 #define IDS_MENU_FORMAT_10              2010
 #define IDS_MENU_FORMAT_11              2011
+#define IDS_MENU_FORMAT_12              2012
+#define IDS_MENU_FORMAT_13              2013
 #define IDS_VIEWER_CLIPBOARD            3000
 #define IDS_VIEWER_HISTORY              3001
 #define IDS_VIEWER_REGIST               3002

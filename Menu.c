@@ -376,6 +376,24 @@ static void menu_create_text(const int index, const TCHAR *buf, TCHAR *ret)
 			*(ret++) = *p;
 			break;
 
+		case TEXT('q'):
+			// カスタムキー (小文字)
+			{
+				static const TCHAR custom_keys[] = TEXT("asdfqwerzxcv1234");
+				i = num % (sizeof(custom_keys) / sizeof(TCHAR) - 1);
+				*(ret++) = custom_keys[i];
+			}
+			break;
+
+		case TEXT('Q'):
+			// カスタムキー (大文字)
+			{
+				static const TCHAR custom_keys[] = TEXT("ASDFQWERZXCV1234");
+				i = num % (sizeof(custom_keys) / sizeof(TCHAR) - 1);
+				*(ret++) = custom_keys[i];
+			}
+			break;
+
 		default:
 			*(ret++) = *r;
 			p = r;
