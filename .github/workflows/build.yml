@@ -1,0 +1,82 @@
+name: Build CLCL
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    strategy:
+      matrix:
+        configuration: [Release, Debug]
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. 配置 MSBuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+        with:
+          vs-version: '[17.0,18.0)'
+          msbuild-architecture: x86
+
+      # 3. 查找已安装的 Windows SDK 版本
+      - name: Find Windows SDK version
+        id: sdk
+        run: |
+          $sdkRoot = "C:\Program Files (x86)\Windows Kits\10\Include"
+          $version = Get-ChildItem $sdkRoot | Where-Object { $_.Name -match '^\d+\.' } | Sort-Object Name -Descending | Select-Object -First 1 -ExpandProperty Name
+          echo "Found SDK: $version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      # 4. 编译 Release（最小体积优化）
+      - name: Build Release
+        if: matrix.configuration == 'Release'
+        run: |
+          msbuild CLCL.sln `
+            /p:Configuration=Release `
+            /p:Platform=x86 `
+            /p:PlatformToolset=v143 `
+            /p:WindowsTargetPlatformVersion=${{ steps.sdk.outputs.version }} `
+            /p:DebugInformationFormat= `
+            /p:GenerateDebugInformation=false `
+            /p:IntrinsicFunctions=true `
+            /p:WholeProgramOptimization=true `
+            /p:LinkTimeCodeGeneration=UseLinkTimeCodeGeneration `
+            /m `
+            /verbosity:minimal
+
+      # 4. 编译 Debug（保留完整调试信息）
+      - name: Build Debug
+        if: matrix.configuration == 'Debug'
+        run: |
+          msbuild CLCL.sln `
+            /p:Configuration=Debug `
+            /p:Platform=x86 `
+            /p:PlatformToolset=v143 `
+            /p:WindowsTargetPlatformVersion=${{ steps.sdk.outputs.version }} `
+            /m `
+            /verbosity:minimal
+
+      # 5. 复制 ini 到输出目录
+      - name: Copy ini to output directory
+        run: Copy-Item clcl_app.ini ${{ matrix.configuration }}\
+
+      # 6. 上传构建产物
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CLCL-${{ matrix.configuration }}-Win32
+          path: |
+            ${{ matrix.configuration }}/CLCL.exe
+            ${{ matrix.configuration }}/CLCLHook.dll
+            ${{ matrix.configuration }}/CLCLSet.exe
+            ${{ matrix.configuration }}/clcl_app.ini
+          if-no-files-found: warn
