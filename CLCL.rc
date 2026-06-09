@@ -122,7 +122,7 @@ BEGIN
         MENUITEM "工具栏(&T)",                  ID_MENUITEM_SHOW_TOOLBAR
         MENUITEM "状态栏(&S)",                ID_MENUITEM_SHOW_STATUSBAR
         MENUITEM SEPARATOR
-        MENUITEM "在树形视图中显示格式(&F)",               ID_MENUITEM_SHOW_FORMAT
+        MENUITEM "在树形列表中显示格式(&F)",               ID_MENUITEM_SHOW_FORMAT
         MENUITEM "二进制显示(&B)",                  ID_MENUITEM_SHOW_BIN
         MENUITEM SEPARATOR
         MENUITEM "选项(&O)...",                ID_MENUITEM_OPTION
@@ -156,7 +156,7 @@ BEGIN
         MENUITEM "复制到剪贴板(&C)\tCtrl+C",      ID_MENUITEM_CLIPBOARD
         MENUITEM "从剪贴板粘贴(&P)\tCtrl+V",   ID_MENUITEM_PASTE
         MENUITEM "添加到收藏(&R)...\tCtrl+R",    ID_MENUITEM_REGIST_ADD
-        MENUITEM "工具(&T)",                     ID_MENUITEM_TOOL_MENU
+        MENUITEM "插件(&T)",                     ID_MENUITEM_TOOL_MENU
         MENUITEM SEPARATOR
         MENUITEM "上移(&U)\tAlt+↑",               ID_MENUITEM_UP
         MENUITEM "下移(&W)\tAlt+↓",               ID_MENUITEM_DOWN
@@ -178,7 +178,7 @@ BEGIN
         MENUITEM "复制到剪贴板(&C)\tCtrl+C",      ID_MENUITEM_CLIPBOARD
         MENUITEM "从剪贴板粘贴(&P)\tCtrl+V",   ID_MENUITEM_PASTE
         MENUITEM "添加到收藏(&R)...\tCtrl+R",    ID_MENUITEM_REGIST_ADD
-        MENUITEM "工具(&T)",                     ID_MENUITEM_TOOL_MENU
+        MENUITEM "插件(&T)",                     ID_MENUITEM_TOOL_MENU
         MENUITEM SEPARATOR
         MENUITEM "上移(&U)\tAlt+↑",               ID_MENUITEM_UP
         MENUITEM "下移(&W)\tAlt+↓",               ID_MENUITEM_DOWN
@@ -192,7 +192,7 @@ BEGIN
     BEGIN
         MENUITEM "复制到剪贴板(&C)\tCtrl+C",      ID_MENUITEM_CLIPBOARD
         MENUITEM "从剪贴板粘贴(&P)\tCtrl+V",   ID_MENUITEM_PASTE
-        MENUITEM "工具(&T)",                     ID_MENUITEM_TOOL_MENU
+        MENUITEM "插件(&T)",                     ID_MENUITEM_TOOL_MENU
         MENUITEM SEPARATOR
         MENUITEM "上移(&U)\tAlt+↑",               ID_MENUITEM_UP
         MENUITEM "下移(&W)\tAlt+↓",               ID_MENUITEM_DOWN
@@ -221,7 +221,7 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "复制到剪贴板(&C)\tCtrl+C",      ID_MENUITEM_CLIPBOARD
         MENUITEM "从剪贴板粘贴(&P)\tCtrl+V",   ID_MENUITEM_PASTE
-        MENUITEM "工具(&T)",                     ID_MENUITEM_TOOL_MENU
+        MENUITEM "插件(&T)",                     ID_MENUITEM_TOOL_MENU
         MENUITEM SEPARATOR
         MENUITEM "上移(&U)\tAlt+↑",               ID_MENUITEM_UP
         MENUITEM "下移(&W)\tAlt+↓",               ID_MENUITEM_DOWN
@@ -460,7 +460,7 @@ BEGIN
     IDS_MENU_REGIST         "收藏项(&R)"
     IDS_MENU_CANCEL         "取消(&C)"
     IDS_MENU_EXIT           "退出(&X)"
-    IDS_MENU_VIEWER         "视图(&V)..."
+    IDS_MENU_VIEWER         "查看器(&V)..."
     IDS_MENU_OPTION         "选项(&O)..."
     IDS_MENU_CLIPBOARD_WATCH "监视剪贴板(&W)"
     IDS_TREEITEM_CLIPBOARD  "剪贴板"
